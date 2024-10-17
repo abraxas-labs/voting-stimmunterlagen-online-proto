@@ -1,0 +1,19 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "google/protobuf/empty.proto";
+import "models/voter_list.proto";
+import "requests/voter_list_requests.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service VoterListService {
+  rpc List(requests.ListVoterListsRequest) returns (models.VoterLists);
+  rpc UpdateLists(requests.UpdateVoterListsRequest) returns (google.protobuf.Empty);
+  rpc AssignPoliticalBusiness(requests.AssignPoliticalBusinessVoterListRequest) returns (google.protobuf.Empty);
+  rpc UnassignPoliticalBusiness(requests.UnassignPoliticalBusinessVoterListRequest) returns (google.protobuf.Empty);
+}

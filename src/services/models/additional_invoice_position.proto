@@ -1,0 +1,32 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "google/protobuf/timestamp.proto";
+import "models/domain_of_influence.proto";
+import "models/user.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message AdditionalInvoicePositions {
+  repeated AdditionalInvoicePosition positions = 1;
+}
+
+message AdditionalInvoicePosition {
+  string id = 1;
+  DomainOfInfluence domain_of_influence = 2;
+  string material_number = 3;
+  int32 amount_centime = 4;
+  google.protobuf.Timestamp created = 5;
+  User created_by = 6;
+  google.protobuf.Timestamp modified = 7;
+  User modified_by = 8;
+}
+
+message AdditionalInvoicePositionAvailableMaterial {
+  string number = 1;
+  string description = 2;
+}

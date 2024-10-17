@@ -1,0 +1,21 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "google/protobuf/timestamp.proto";
+import "models/voter_list.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message VoterListImport {
+  string id = 1;
+  string name = 2;
+  google.protobuf.Timestamp last_update = 3;
+  VoterListSource source = 4;
+  string source_id = 5;
+  repeated VoterList voter_lists = 6;
+  bool auto_send_voting_cards_to_domain_of_influence_return_address_split = 7;
+}

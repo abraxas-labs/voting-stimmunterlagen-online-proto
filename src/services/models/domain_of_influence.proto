@@ -1,0 +1,59 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "google/protobuf/timestamp.proto";
+import "models/domain_of_influence_voting_card_print_data.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message DomainOfInfluences {
+  repeated DomainOfInfluence domain_of_influences = 1;
+}
+
+message DomainOfInfluenceTypes {
+  repeated DomainOfInfluenceType domain_of_influence_types = 1;
+}
+
+message DomainOfInfluence {
+  string id = 1;
+  string name = 2;
+  string short_name = 3;
+  string authority_name = 4;
+  DomainOfInfluenceType type = 5;
+  string secure_connect_id = 6;
+  bool responsible_for_voting_cards = 7;
+  bool external_printing_center = 8;
+  string external_printing_center_eai_message_type = 9;
+  DomainOfInfluenceVotingCardPrintData print_data = 10;
+  bool electoral_registration_enabled = 11;
+
+  // indicates whether manual voter list upload is allowed
+  // even if electoral_registration_enabled is false
+  bool allow_manual_voter_list_upload = 12;
+
+  // indicates whether manual voter list uploads can be performed for this DOI
+  // combination (!electoral_registration_enabled || allow_manual_voter_list_upload)
+  bool can_manually_upload_voter_list = 13;
+
+  // indicates when the last voter list was imported or when the last manual voting card was generated
+  google.protobuf.Timestamp last_voter_update = 14;
+}
+
+enum DomainOfInfluenceType {
+  // compatibility with VOTING.Basis
+  DOMAIN_OF_INFLUENCE_TYPE_UNSPECIFIED = 0;
+  DOMAIN_OF_INFLUENCE_TYPE_CH = 1;
+  DOMAIN_OF_INFLUENCE_TYPE_CT = 2;
+  DOMAIN_OF_INFLUENCE_TYPE_BZ = 3;
+  DOMAIN_OF_INFLUENCE_TYPE_MU = 4;
+  DOMAIN_OF_INFLUENCE_TYPE_SK = 5;
+  DOMAIN_OF_INFLUENCE_TYPE_SC = 6;
+  DOMAIN_OF_INFLUENCE_TYPE_KI = 7;
+  DOMAIN_OF_INFLUENCE_TYPE_OG = 8;
+  DOMAIN_OF_INFLUENCE_TYPE_KO = 9;
+  DOMAIN_OF_INFLUENCE_TYPE_AN = 10;
+}

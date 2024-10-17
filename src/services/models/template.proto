@@ -1,0 +1,49 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message Templates {
+  repeated Template templates = 1;
+}
+
+message Template {
+  int32 id = 1;
+  string name = 2;
+}
+
+message TemplatePreview {
+  bytes pdf = 1;
+}
+
+message TemplateDataValues {
+  repeated TemplateDataValuesContainer containers = 1;
+}
+
+message TemplateDataValuesContainer {
+  string key = 1;
+  string name = 2;
+  repeated TemplateDataFieldValue fields = 3;
+}
+
+message TemplateDataFieldValue {
+  string key = 1;
+  string name = 2;
+  string value = 3;
+}
+
+message TemplateBricks {
+  repeated TemplateBrick bricks = 1;
+}
+
+message TemplateBrick {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+  string preview_data = 4;
+  int32 content_id = 5;
+}

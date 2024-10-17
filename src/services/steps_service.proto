@@ -1,0 +1,18 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "google/protobuf/empty.proto";
+import "models/step.proto";
+import "requests/steps_requests.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service StepService {
+  rpc List(requests.ListStepsRequest) returns (models.StepStates);
+  rpc Approve(requests.ApproveStepRequest) returns (google.protobuf.Empty);
+  rpc Revert(requests.RevertStepRequest) returns (google.protobuf.Empty);
+}

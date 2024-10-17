@@ -1,0 +1,95 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "google/protobuf/timestamp.proto";
+import "models/attachment.proto";
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message ListAttachmentCategorySummariesRequest {
+  oneof doi_or_filter {
+    string domain_of_influence_id = 1 [(validation.v1.rules).string = { guid: true, allow_empty: true }];
+    ListAttachmentCategorySummariesFilterRequest filter = 2;
+  }
+}
+
+message CreateAttachmentRequest {
+  string name = 1 [(validation.v1.rules).string = { min_length: 1, max_length: 300, complex_sl_text: true }];
+  models.AttachmentFormat format = 2 [(validation.v1.rules).enum.exact_enum = true];
+  string color = 3 [(validation.v1.rules).string = { max_length: 20, complex_sl_text: true, allow_empty: true }];
+  string supplier = 4 [(validation.v1.rules).string = { min_length: 1, max_length: 300, complex_sl_text: true }];
+  google.protobuf.Timestamp delivery_planned_on = 5 [(validation.v1.rules).object.required = true];
+  string domain_of_influence_id = 6 [(validation.v1.rules).string.guid = true];
+  repeated string political_business_ids = 7 [(validation.v1.rules).string.guid = true];
+  int32 ordered_count = 8 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000 }];
+  int32 required_count = 9 [(validation.v1.rules).integer = { min_value: 0, max_value: 1000000 }];
+  models.AttachmentCategory category = 10 [(validation.v1.rules).enum.exact_enum = true];
+}
+
+message UpdateAttachmentRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  string name = 2 [(validation.v1.rules).string = { min_length: 1, max_length: 300, complex_sl_text: true }];
+  models.AttachmentFormat format = 3 [(validation.v1.rules).enum.exact_enum = true];
+  string color = 4 [(validation.v1.rules).string = { max_length: 20, complex_sl_text: true, allow_empty: true }];
+  string supplier = 5 [(validation.v1.rules).string = { min_length: 1, max_length: 300, complex_sl_text: true }];
+  google.protobuf.Timestamp delivery_planned_on = 6 [(validation.v1.rules).object.required = true];
+  repeated string political_business_ids = 7 [(validation.v1.rules).string.guid = true];
+  int32 ordered_count = 8 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000 }];
+  int32 required_count = 9 [(validation.v1.rules).integer = { min_value: 0, max_value: 1000000 }];
+  models.AttachmentCategory category = 10 [(validation.v1.rules).enum.exact_enum = true];
+}
+
+message AssignPoliticalBusinessAttachmentRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  string political_business_id = 2 [(validation.v1.rules).string.guid = true];
+}
+
+message UnassignPoliticalBusinessAttachmentRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  string political_business_id = 2 [(validation.v1.rules).string.guid = true];
+}
+
+message SetDomainOfInfluenceAttachmentRequiredCountRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  string domain_of_influence_id = 2 [(validation.v1.rules).string.guid = true];
+  int32 required_count = 3 [(validation.v1.rules).integer = { min_value: 0, max_value: 1000000 }];
+}
+
+message ListAttachmentCategorySummariesFilterRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+  string query = 2 [(validation.v1.rules).string = { max_length: 100, complex_sl_text: true, allow_empty: true }];
+  models.AttachmentState state = 3 [(validation.v1.rules).enum = { exact_enum: true, allow_unspecified: true }];
+}
+
+message SetAttachmentStateRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  models.AttachmentState state = 2 [(validation.v1.rules).enum.exact_enum = true];
+  string comment = 3 [(validation.v1.rules).string = { max_length: 500, complex_ml_text: true, allow_empty: true }];
+}
+
+message SetAttachmentStationRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  int32 station = 2 [(validation.v1.rules).integer = { min_value: 1, max_value: 99 }];
+}
+
+message ListDomainOfInfluenceAttachmentCategorySummariesRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message ListDomainOfInfluenceAttachmentCountsRequest {
+  string attachment_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message UpdateDomainOfInfluenceAttachmentEntriesRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  repeated string domain_of_influence_ids = 2 [(validation.v1.rules).string.guid = true];
+}
+
+message GetAttachmentsProgressRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+}

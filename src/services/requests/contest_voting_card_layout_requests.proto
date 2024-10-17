@@ -1,0 +1,31 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "models/voting_card_type.proto";
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message SetContestVotingCardLayoutRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+  bool allow_custom = 2;
+  int32 template_id = 3 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000 }];
+  models.VotingCardType voting_card_type = 4 [(validation.v1.rules).enum.exact_enum = true];
+}
+
+message GetContestVotingCardLayoutsRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message GetContestVotingCardLayoutTemplatesRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message GetContestVotingCardLayoutPdfPreviewRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+  models.VotingCardType voting_card_type = 2 [(validation.v1.rules).enum.exact_enum = true];
+}

@@ -1,0 +1,46 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "google/protobuf/timestamp.proto";
+
+import "models/domain_of_influence.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message Contests {
+  repeated Contest contests = 1;
+}
+
+message Contest {
+  string id = 1;
+  google.protobuf.Timestamp date = 2;
+  string description = 3;
+  DomainOfInfluence domain_of_influence = 4;
+  google.protobuf.Timestamp approved = 5;
+  bool is_approved = 6;
+  google.protobuf.Timestamp printing_center_sign_up_deadline = 7;
+  google.protobuf.Timestamp attachment_delivery_deadline = 8;
+  ContestState state = 9;
+  bool is_single_attendee_contest = 10;
+  google.protobuf.Timestamp generate_voting_cards_deadline = 11;
+  bool is_political_assembly = 12;
+}
+
+enum ContestState {
+  // the proto default value, should never be used
+  CONTEST_STATE_UNSPECIFIED = 0;
+  // contest is in testing phase
+  CONTEST_STATE_TESTING_PHASE = 1;
+  // contest takes place in the future or today, but is not in the testing phase anymore.
+  CONTEST_STATE_ACTIVE = 2;
+  // contest has taken place in the past and is locked
+  CONTEST_STATE_PAST_LOCKED = 3;
+  // contest has taken place in the past and is unlocked and will automatically get locked after the day ends.
+  CONTEST_STATE_PAST_UNLOCKED = 4;
+  // contest is archived
+  CONTEST_STATE_ARCHIVED = 5;
+}

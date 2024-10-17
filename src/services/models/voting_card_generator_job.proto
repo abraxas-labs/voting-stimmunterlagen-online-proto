@@ -1,0 +1,35 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "google/protobuf/timestamp.proto";
+import "models/voting_card_type.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message VotingCardGeneratorJobs {
+  repeated VotingCardGeneratorJob jobs = 1;
+}
+
+message VotingCardGeneratorJob {
+  string id = 1;
+  string file_name = 2;
+  int32 count_of_voters = 4;
+  google.protobuf.Timestamp started = 5;
+  google.protobuf.Timestamp completed = 6;
+  google.protobuf.Timestamp failed = 7;
+  VotingCardType voting_card_type = 8;
+  VotingCardGeneratorJobState state = 9;
+}
+
+enum VotingCardGeneratorJobState {
+  VOTING_CARD_GENERATOR_JOB_STATE_UNSPECIFIED = 0;
+  VOTING_CARD_GENERATOR_JOB_STATE_READY = 1;
+  VOTING_CARD_GENERATOR_JOB_STATE_RUNNING = 2;
+  VOTING_CARD_GENERATOR_JOB_STATE_COMPLETED = 3;
+  VOTING_CARD_GENERATOR_JOB_STATE_FAILED = 4;
+  VOTING_CARD_GENERATOR_JOB_STATE_READY_TO_RUN_OFFLINE = 5;
+}

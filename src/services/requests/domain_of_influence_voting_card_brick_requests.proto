@@ -1,0 +1,24 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message ListDomainOfInfluenceVotingCardBrickRequest {
+  int32 template_id = 1 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000 }];
+}
+
+message GetDomainOfInfluenceVotingCardBrickContentEditorUrlRequest {
+  int32 brick_id = 1 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000 }];
+  int32 content_id = 2 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000 }];
+}
+
+message UpdateDomainOfInfluenceVotingCardBrickContentRequest {
+  int32 content_id = 1 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000 }];
+  string content = 2 [(validation.v1.rules).string = { min_length: 1, max_length: 5000 }];
+}

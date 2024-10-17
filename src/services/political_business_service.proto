@@ -1,0 +1,15 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "models/political_business.proto";
+import "requests/political_business_requests.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service PoliticalBusinessService {
+  rpc List(requests.ListPoliticalBusinessesRequest) returns (models.PoliticalBusinesses);
+}

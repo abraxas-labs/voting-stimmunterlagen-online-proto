@@ -1,0 +1,37 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "google/protobuf/empty.proto";
+import "models/attachment.proto";
+import "models/id_value.proto";
+import "requests/attachment_requests.proto";
+import "requests/id_value_requests.proto";
+import "responses/attachment_responses.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service AttachmentService {
+  rpc Create(requests.CreateAttachmentRequest) returns (models.IdValue);
+  rpc Update(requests.UpdateAttachmentRequest) returns (google.protobuf.Empty);
+  rpc Delete(requests.IdValueRequest) returns (google.protobuf.Empty);
+  rpc ListCategorySummaries(requests.ListAttachmentCategorySummariesRequest)
+    returns (models.AttachmentCategorySummaries);
+  rpc ListDomainOfInfluenceAttachmentCategorySummaries(requests.ListDomainOfInfluenceAttachmentCategorySummariesRequest)
+    returns (models.DomainOfInfluenceAttachmentCategorySummariesEntries);
+  rpc AssignPoliticalBusiness(requests.AssignPoliticalBusinessAttachmentRequest) returns (google.protobuf.Empty);
+  rpc UnassignPoliticalBusiness(requests.UnassignPoliticalBusinessAttachmentRequest) returns (google.protobuf.Empty);
+  rpc SetDomainOfInfluenceAttachmentRequiredCount(requests.SetDomainOfInfluenceAttachmentRequiredCountRequest)
+    returns (google.protobuf.Empty);
+  rpc SetState(requests.SetAttachmentStateRequest) returns (google.protobuf.Empty);
+  rpc SetStation(requests.SetAttachmentStationRequest) returns (google.protobuf.Empty);
+  rpc ListDomainOfInfluenceAttachmentCounts(requests.ListDomainOfInfluenceAttachmentCountsRequest)
+    returns (models.DomainOfInfluenceAttachmentCounts);
+  rpc UpdateDomainOfInfluenceAttachmentEntries (requests.UpdateDomainOfInfluenceAttachmentEntriesRequest)
+    returns (google.protobuf.Empty);
+  rpc GetAttachmentsProgress(requests.GetAttachmentsProgressRequest)
+    returns (responses.GetAttachmentsProgressResponse);
+}

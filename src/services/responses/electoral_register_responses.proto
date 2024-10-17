@@ -1,0 +1,31 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.responses;
+
+import "models/electoral_register_filter.proto";
+import "models/voter.proto";
+import "models/voting_card_type.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Responses";
+
+message GetElectoralRegisterFilterVersionResponse {
+  models.ElectoralRegisterFilter filter = 1;
+  models.ElectoralRegisterFilterVersion version = 2;
+}
+
+message VoterListImportWithElectoralRegisterResponse {
+  string import_id = 1;
+  string filter_version_id = 2;
+  repeated VoterListImportVoterListResponse voter_lists = 3;
+}
+
+message VoterListImportVoterListResponse {
+  string id = 1;
+  models.VotingCardType voting_card_type = 2;
+  int32 number_of_voters = 3;
+  int32 count_of_send_voting_cards_to_domain_of_influence_return_address = 4;
+  repeated models.VoterDuplicate voter_duplicates = 5;
+}

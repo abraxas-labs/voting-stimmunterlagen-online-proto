@@ -1,0 +1,22 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "google/protobuf/empty.proto";
+import "models/contest.proto";
+import "requests/contest_requests.proto";
+import "requests/id_value_requests.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service ContestService {
+  rpc Get(requests.IdValueRequest) returns (models.Contest);
+  rpc List(requests.ListContestsRequest) returns (models.Contests);
+  rpc SetDeadlines(requests.SetContestDeadlinesRequest) returns (google.protobuf.Empty);
+  rpc UpdatePrintingCenterSignUpDeadline(requests.UpdateContestPrintingCenterSignupDeadlineRequest)
+    returns (google.protobuf.Empty);
+}
+

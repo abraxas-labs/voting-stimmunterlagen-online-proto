@@ -1,0 +1,13 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message Country {
+  string iso2 = 1;
+  string name = 2;
+}

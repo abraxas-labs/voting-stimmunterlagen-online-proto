@@ -1,0 +1,25 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "google/protobuf/empty.proto";
+import "models/domain_of_influence.proto";
+import "models/e_voting_domain_of_influence.proto";
+import "requests/domain_of_influence_requests.proto";
+import "requests/id_value_requests.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service DomainOfInfluenceService {
+  rpc Get(requests.IdValueRequest) returns (models.DomainOfInfluence);
+  rpc ListManagedByCurrentTenant(requests.ListDomainOfInfluencesRequest) returns (models.DomainOfInfluences);
+  rpc ListEVoting(requests.ListEVotingDomainOfInfluencesRequest) returns (models.EVotingDomainOfInfluenceEntries);
+  rpc ListChildren(requests.ListDomainOfInfluenceChildrenRequest) returns (models.DomainOfInfluences);
+
+  // updates settings of the domain of influence for a contest
+  // needs contest manager permissions
+  rpc UpdateSettings(requests.UpdateDomainOfInfluenceSettingsRequest) returns (google.protobuf.Empty);
+}

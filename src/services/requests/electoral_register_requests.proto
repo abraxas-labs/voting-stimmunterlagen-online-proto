@@ -1,0 +1,38 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "google/protobuf/timestamp.proto";
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message GetElectoralRegisterFilterMetadataRequest {
+  string filter_id = 1 [(validation.v1.rules).string.guid = true];
+  google.protobuf.Timestamp deadline = 2 [(validation.v1.rules).object.required = true];
+}
+
+message ListElectoralRegisterFilterVersionsRequest {
+  string filter_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message GetElectoralRegisterFilterVersionRequest {
+  string filter_version_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message CreateVoterListImportWithNewElectoralRegisterFilterVersionRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  string filter_id = 2 [(validation.v1.rules).string.guid = true];
+  string filter_version_name = 3 [(validation.v1.rules).string = { min_length: 2, max_length: 100, complex_sl_text: true}];
+  google.protobuf.Timestamp filter_version_deadline = 4 [(validation.v1.rules).object.required = true];
+}
+
+message UpdateVoterListImportWithNewElectoralRegisterFilterVersionRequest {
+  string import_id = 1 [(validation.v1.rules).string.guid = true];
+  string filter_id = 2 [(validation.v1.rules).string.guid = true];
+  string filter_version_name = 3 [(validation.v1.rules).string = { min_length: 2, max_length: 100, complex_sl_text: true}];
+  google.protobuf.Timestamp filter_version_deadline = 4 [(validation.v1.rules).object.required = true];
+}

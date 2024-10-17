@@ -1,0 +1,30 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "google/protobuf/empty.proto";
+import "models/electoral_register_filter.proto";
+import "requests/electoral_register_requests.proto";
+import "responses/electoral_register_responses.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service ElectoralRegisterService {
+  rpc ListFilters(google.protobuf.Empty)
+    returns (models.ElectoralRegisterFilters);
+  rpc GetFilterMetadata(requests.GetElectoralRegisterFilterMetadataRequest)
+    returns (models.ElectoralRegisterFilterMetadata);
+  rpc ListFilterVersions(requests.ListElectoralRegisterFilterVersionsRequest)
+    returns (models.ElectoralRegisterFilterVersions);
+  rpc GetFilterVersion(requests.GetElectoralRegisterFilterVersionRequest)
+    returns (responses.GetElectoralRegisterFilterVersionResponse);
+  // protolint:disable MAX_LINE_LENGTH
+  rpc CreateVoterListImportWithNewFilterVersion(requests.CreateVoterListImportWithNewElectoralRegisterFilterVersionRequest)
+    returns (responses.VoterListImportWithElectoralRegisterResponse);
+  // protolint:disable MAX_LINE_LENGTH
+  rpc UpdateVoterListImportWithNewFilterVersion(requests.UpdateVoterListImportWithNewElectoralRegisterFilterVersionRequest)
+    returns (responses.VoterListImportWithElectoralRegisterResponse);
+}

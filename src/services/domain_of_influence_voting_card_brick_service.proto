@@ -1,0 +1,20 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "models/template.proto";
+import "requests/domain_of_influence_voting_card_brick_requests.proto";
+import "responses/domain_of_influence_voting_card_brick_responses.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service DomainOfInfluenceVotingCardBrickService {
+  rpc List (requests.ListDomainOfInfluenceVotingCardBrickRequest) returns (models.TemplateBricks);
+  rpc GetContentEditorUrl (requests.GetDomainOfInfluenceVotingCardBrickContentEditorUrlRequest)
+    returns (responses.GetDomainOfInfluenceVotingCardBrickContentEditorUrlResponse);
+  rpc UpdateContent (requests.UpdateDomainOfInfluenceVotingCardBrickContentRequest)
+    returns (responses.UpdateDomainOfInfluenceVotingCardBrickContentResponse);
+}

@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "models/domain_of_influence.proto";
+import "models/political_business.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message Attachments {
+  repeated Attachment attachments = 1;
+}
+
+message Attachment {
+  string id = 1;
+  string name = 2;
+  AttachmentFormat format = 3;
+  string color = 4;
+  string supplier = 5;
+  google.protobuf.Timestamp delivery_planned_on = 6;
+  google.protobuf.Timestamp delivery_received_on = 7;
+  DomainOfInfluence domain_of_influence = 8;
+  repeated string political_business_ids = 9;
+  AttachmentState state = 10;
+  google.protobuf.Int32Value domain_of_influence_attachment_required_count = 11;
+  google.protobuf.Int32Value domain_of_influence_attachment_required_for_voter_lists_count = 12;
+  int32 total_required_count = 13;
+  int32 total_required_for_voter_lists_count = 14;
+  google.protobuf.Int32Value station = 15;
+  int32 ordered_count = 16;
+  AttachmentCategory category = 17;
+}
+
+enum AttachmentFormat {
+  ATTACHMENT_FORMAT_UNSPECIFIED = 0;
+  ATTACHMENT_FORMAT_A4 = 1;
+  ATTACHMENT_FORMAT_A5 = 2;
+  ATTACHMENT_FORMAT_A6 = 3;
+}
+
+enum AttachmentState {
+  ATTACHMENT_STATE_UNSPECIFIED = 0;
+
+  // "erfasst" Beilage wurde vom Benutzer erfasst.
+  ATTACHMENT_STATE_DEFINED = 1;
+
+  // "geliefert"
+  ATTACHMENT_STATE_DELIVERED = 2;
+
+  // "zurückgewiesen"
+  ATTACHMENT_STATE_REJECTED = 3;
+}
+
+enum AttachmentCategory {
+  ATTACHMENT_CATEGORY_UNSPECIFIED = 0;
+  ATTACHMENT_CATEGORY_BROCHURE_CH = 1;
+  ATTACHMENT_CATEGORY_BROCHURE_CT = 2;
+  ATTACHMENT_CATEGORY_BROCHURE_MU = 3;
+  ATTACHMENT_CATEGORY_BALLOT_ALL = 4;
+  ATTACHMENT_CATEGORY_BALLOT_CH = 5;
+  ATTACHMENT_CATEGORY_BALLOT_CT = 6;
+  ATTACHMENT_CATEGORY_BALLOT_MU = 7;
+  ATTACHMENT_CATEGORY_BALLOT_ENVELOPE_STANDARD = 8;
+  ATTACHMENT_CATEGORY_BALLOT_ENVELOPE_CUSTOM = 9;
+  ATTACHMENT_CATEGORY_OTHER_CH = 10;
+  ATTACHMENT_CATEGORY_OTHER_CT = 11;
+  ATTACHMENT_CATEGORY_OTHER_MU = 12;
+  ATTACHMENT_CATEGORY_VOTING_GUIDE_CH = 13;
+  ATTACHMENT_CATEGORY_VOTING_GUIDE_CT = 14;
+  ATTACHMENT_CATEGORY_VOTING_GUIDE_MU = 15;
+}
+
+message DomainOfInfluenceAttachmentCounts {
+  repeated DomainOfInfluenceAttachmentCount counts = 1;
+}
+
+message DomainOfInfluenceAttachmentCount {
+  string attachment_id = 1;
+  DomainOfInfluence domain_of_influence = 2;
+  google.protobuf.Int32Value required_count = 3;
+  int32 required_for_voter_lists_count = 4;
+}
+
+message DomainOfInfluenceAttachmentCategorySummariesEntries {
+  repeated DomainOfInfluenceAttachmentCategorySummariesEntry entries = 1;
+}
+
+message DomainOfInfluenceAttachmentCategorySummariesEntry {
+  DomainOfInfluence domain_of_influence = 1;
+  repeated AttachmentCategorySummary attachment_category_summaries = 2;
+  repeated PoliticalBusiness political_businesses = 3;
+}
+
+message AttachmentCategorySummary {
+  AttachmentCategory category = 1;
+  repeated Attachment attachments = 2;
+  int32 total_ordered_count = 3;
+  int32 total_required_count = 4;
+  int32 total_required_for_voter_lists_count = 5;
+}
+
+message AttachmentCategorySummaries {
+  repeated AttachmentCategorySummary summaries = 1;
+}

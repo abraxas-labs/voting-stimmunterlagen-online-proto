@@ -1,0 +1,23 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "google/protobuf/empty.proto";
+import "models/print_job.proto";
+import "requests/print_job_requests.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service PrintJobService {
+  rpc Get(requests.GetPrintJobRequest) returns (models.PrintJob);
+  rpc ListSummaries(requests.ListPrintJobSummariesRequest) returns (models.PrintJobSummaries);
+  rpc ListGenerateVotingCardsTriggered(requests.ListPrintJobGenerateVotingCardsTriggeredRequest)
+    returns (models.PrintJobs);
+  rpc ResetState(requests.ResetPrintJobStateRequest) returns (google.protobuf.Empty);
+  rpc SetProcessStarted(requests.SetPrintJobProcessStartedRequest) returns (google.protobuf.Empty);
+  rpc SetProcessEnded(requests.SetPrintJobProcessEndedRequest) returns (google.protobuf.Empty);
+  rpc SetDone(requests.SetPrintJobDoneRequest) returns (google.protobuf.Empty);
+}

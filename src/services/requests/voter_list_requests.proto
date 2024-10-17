@@ -1,0 +1,35 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "google/protobuf/wrappers.proto";
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message ListVoterListsRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message AssignPoliticalBusinessVoterListRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  string political_business_id = 2 [(validation.v1.rules).string.guid = true];
+}
+
+message UnassignPoliticalBusinessVoterListRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  string political_business_id = 2 [(validation.v1.rules).string.guid = true];
+}
+
+message UpdateVoterListsRequest {
+  repeated UpdateVoterListRequest voter_lists = 1;
+}
+
+message UpdateVoterListRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  repeated string political_business_ids = 2 [(validation.v1.rules).string.guid = true];
+  google.protobuf.BoolValue send_voting_cards_to_domain_of_influence_return_address = 3;
+}

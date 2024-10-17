@@ -1,0 +1,17 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.responses;
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Responses";
+
+message GetDomainOfInfluenceVotingCardBrickContentEditorUrlResponse {
+  string url = 1;
+}
+
+message UpdateDomainOfInfluenceVotingCardBrickContentResponse {
+  int32 new_brick_id = 1;
+  int32 new_content_id = 2;
+}

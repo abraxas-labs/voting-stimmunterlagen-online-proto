@@ -1,0 +1,27 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message ListAdditionalInvoicePositionsRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message CreateAdditionalInvoicePositionRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  string material_number = 2 [(validation.v1.rules).string = { min_length: 1, max_length: 16, simple_sl_text: true }];
+  int32 amount_centime = 3 [(validation.v1.rules).integer = { min_value: 25, max_value: 100000000 }];
+}
+
+message UpdateAdditionalInvoicePositionRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  string domain_of_influence_id = 2 [(validation.v1.rules).string.guid = true];
+  string material_number = 3 [(validation.v1.rules).string = { min_length: 1, max_length: 16, simple_sl_text: true }];
+  int32 amount_centime = 4 [(validation.v1.rules).integer = { min_value: 25, max_value: 100000000 }];
+}

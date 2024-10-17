@@ -1,0 +1,24 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "google/protobuf/empty.proto";
+import "models/additional_invoice_position.proto";
+import "models/id_value.proto";
+import "requests/additional_invoice_position_requests.proto";
+import "requests/id_value_requests.proto";
+import "responses/additional_invoice_position_responses.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service AdditionalInvoicePositionService {
+  rpc ListAvailableMaterial(google.protobuf.Empty)
+    returns (responses.ListAdditionalInvoicePositionAvailableMaterialResponse);
+  rpc List(requests.ListAdditionalInvoicePositionsRequest) returns (models.AdditionalInvoicePositions);
+  rpc Create(requests.CreateAdditionalInvoicePositionRequest) returns (models.IdValue);
+  rpc Update(requests.UpdateAdditionalInvoicePositionRequest) returns (google.protobuf.Empty);
+  rpc Delete(requests.IdValueRequest) returns (google.protobuf.Empty);
+}

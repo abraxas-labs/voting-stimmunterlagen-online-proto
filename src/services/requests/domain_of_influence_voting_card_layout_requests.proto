@@ -1,0 +1,59 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "google/protobuf/wrappers.proto";
+import "models/voting_card_type.proto";
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message SetDomainOfInfluenceVotingCardLayoutRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  bool allow_custom = 2;
+  models.VotingCardType voting_card_type = 3 [(validation.v1.rules).enum.exact_enum = true];
+  // if not set, the value is inherited from the contest, can be converted to proto3 optional with proto3.15
+  google.protobuf.Int32Value template_id = 4 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000}];
+}
+
+message SetOverriddenDomainOfInfluenceVotingCardLayoutRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  models.VotingCardType voting_card_type = 2 [(validation.v1.rules).enum.exact_enum = true];
+  // if not set, the value is reset.
+  google.protobuf.Int32Value template_id = 3 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000}];
+}
+
+message GetDomainOfInfluenceVotingCardLayoutsRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message GetContestDomainOfInfluenceVotingCardLayoutsRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message GetDomainOfInfluenceVotingCardLayoutTemplatesRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message GetDomainOfInfluenceVotingCardLayoutPdfPreviewRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  models.VotingCardType voting_card_type = 2 [(validation.v1.rules).enum.exact_enum = true];
+}
+
+message GetDomainOfInfluenceVotingCardLayoutTemplateDataRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message SetDomainOfInfluenceVotingCardLayoutTemplateDataRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  repeated SetTemplateDataFieldRequest fields = 2;
+}
+
+message SetTemplateDataFieldRequest {
+  string container_key = 1 [(validation.v1.rules).string = { min_length: 1, max_length: 50, complex_sl_text: true }];
+  string field_key = 2 [(validation.v1.rules).string = { min_length: 1, max_length: 50, complex_sl_text: true }];
+  string value = 3 [(validation.v1.rules).string = { max_length: 50, complex_sl_text: true, allow_empty: true }];
+}

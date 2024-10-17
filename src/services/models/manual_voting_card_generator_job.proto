@@ -1,0 +1,24 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "google/protobuf/timestamp.proto";
+import "models/user.proto";
+import "models/voter.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+// "Nachdruck"
+message ManualVotingCardGeneratorJob {
+  string id = 1;
+  google.protobuf.Timestamp created = 2;
+  User created_by = 3;
+  ManualVotingCardVoter voter = 4;
+}
+
+message ManualVotingCardGeneratorJobs {
+  repeated ManualVotingCardGeneratorJob jobs = 1;
+}

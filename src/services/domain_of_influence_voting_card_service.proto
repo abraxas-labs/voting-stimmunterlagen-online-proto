@@ -1,0 +1,20 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "google/protobuf/empty.proto";
+import "models/domain_of_influence_voting_card_configuration.proto";
+import "models/template.proto";
+import "requests/domain_of_influence_voting_card_requests.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service DomainOfInfluenceVotingCardService {
+  rpc GetConfiguration(requests.GetDomainOfInfluenceVotingCardConfigurationRequest)
+    returns (models.DomainOfInfluenceVotingCardConfiguration);
+  rpc SetConfiguration(requests.SetDomainOfInfluenceVotingCardConfigurationRequest) returns (google.protobuf.Empty);
+  rpc GetPdfPreview(requests.GetDomainOfInfluenceVotingCardPdfPreviewRequest) returns (models.TemplatePreview);
+}

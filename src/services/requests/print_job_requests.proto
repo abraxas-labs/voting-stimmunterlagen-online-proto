@@ -1,0 +1,44 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "models/print_job.proto";
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message GetPrintJobRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message ListPrintJobSummariesRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+  string query = 2 [(validation.v1.rules).string = { max_length: 100, complex_sl_text: true, allow_empty: true }];
+  models.PrintJobState state = 3 [(validation.v1.rules).enum = { exact_enum: true, allow_unspecified: true }];
+}
+
+message ListPrintJobGenerateVotingCardsTriggeredRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message ResetPrintJobStateRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message SetPrintJobProcessStartedRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message SetPrintJobProcessEndedRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  int32 voting_cards_printed_and_packed_count = 2 [(validation.v1.rules).integer = { min_value: 0, max_value: 1000000 }];
+  double voting_cards_shipment_weight = 3 [(validation.v1.rules).double = { min_value: 0, max_value: 1000000 }];
+}
+
+message SetPrintJobDoneRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  string comment = 2 [(validation.v1.rules).string = { max_length: 500, complex_ml_text: true, allow_empty: true }];
+}

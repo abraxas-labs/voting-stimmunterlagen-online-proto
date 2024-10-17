@@ -1,0 +1,29 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "models/voting_card_group.proto";
+import "models/voting_card_sort.proto";
+import "models/voting_card_type.proto";
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message SetDomainOfInfluenceVotingCardConfigurationRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  int32 sample_count = 2 [(validation.v1.rules).integer = { min_value: 2, max_value: 50 }];
+  repeated models.VotingCardGroup voting_card_groups = 3 [(validation.v1.rules).enum.exact_enum = true];
+  repeated models.VotingCardSort voting_card_sorts = 4 [(validation.v1.rules).enum.exact_enum = true];
+}
+
+message GetDomainOfInfluenceVotingCardConfigurationRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message GetDomainOfInfluenceVotingCardPdfPreviewRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  models.VotingCardType voting_card_type = 2 [(validation.v1.rules).enum.exact_enum = true];
+}

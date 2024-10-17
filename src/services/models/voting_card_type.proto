@@ -1,0 +1,15 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+enum VotingCardType {
+  VOTING_CARD_TYPE_UNSPECIFIED = 0;
+  VOTING_CARD_TYPE_SWISS = 1;
+  VOTING_CARD_TYPE_SWISS_ABROAD = 2;
+  VOTING_CARD_TYPE_E_VOTING = 3;
+}

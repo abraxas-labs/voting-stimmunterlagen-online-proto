@@ -1,0 +1,11 @@
+# ts
+node_modules/
+/build/angular/src/grpc-gen
+/build/angular/src/public_api.ts
+/build/angular/dist
+/build/angular/bin
+
+# dotnet
+bin/
+obj/
+.vs

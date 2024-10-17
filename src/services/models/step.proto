@@ -1,0 +1,34 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message StepStates {
+  repeated StepState steps = 1;
+}
+
+message StepState {
+  Step step = 1;
+  bool approved = 2;
+}
+
+enum Step {
+  STEP_UNSPECIFIED = 0;
+  STEP_POLITICAL_BUSINESSES_APPROVAL = 1;
+  STEP_LAYOUT_VOTING_CARDS_CONTEST_MANAGER = 2;
+  STEP_LAYOUT_VOTING_CARDS_DOMAIN_OF_INFLUENCES = 3;
+  STEP_LAYOUT_VOTING_CARDS_POLITICAL_BUSINESS_ATTENDEE = 4;
+  STEP_CONTEST_APPROVAL = 5;
+  STEP_ATTACHMENTS = 6;
+  STEP_VOTER_LISTS = 7;
+  STEP_GENERATE_VOTING_CARDS = 8;
+  STEP_E_VOTING = 9;
+  STEP_PRINT_JOB_OVERVIEW = 10;
+  STEP_GENERATE_MANUAL_VOTING_CARDS = 11;
+  STEP_CONTEST_OVERVIEW = 12;
+  STEP_VOTING_JOURNAL = 13;
+}

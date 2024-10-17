@@ -1,0 +1,30 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "google/protobuf/timestamp.proto";
+import "models/contest.proto";
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message ListContestsRequest {
+  repeated models.ContestState states = 1 [(validation.v1.rules).enum.exact_enum = true];
+}
+
+message SetContestDeadlinesRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  google.protobuf.Timestamp printing_center_sign_up_deadline_date = 2 [(validation.v1.rules).object.required = true];
+  google.protobuf.Timestamp attachment_delivery_deadline_date = 3 [(validation.v1.rules).object.required = true];
+  google.protobuf.Timestamp generate_voting_cards_deadline_date = 4 [(validation.v1.rules).object.required = true];
+}
+
+message UpdateContestPrintingCenterSignupDeadlineRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  google.protobuf.Timestamp printing_center_sign_up_deadline_date = 2 [(validation.v1.rules).object.required = true];
+  repeated string reset_generate_voting_cards_triggered_domain_of_influence_ids = 3 [(validation.v1.rules).string.guid = true];
+  google.protobuf.Timestamp generate_voting_cards_deadline_date = 4 [(validation.v1.rules).object.required = true];
+}

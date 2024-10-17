@@ -1,0 +1,59 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "google/protobuf/timestamp.proto";
+import "models/domain_of_influence.proto";
+import "models/step.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message PrintJobs {
+  repeated PrintJob print_jobs = 1;
+}
+
+message PrintJob {
+  DomainOfInfluence domain_of_influence = 1;
+  PrintJobState state = 2;
+  google.protobuf.Timestamp process_started_on = 3;
+  google.protobuf.Timestamp process_ended_on = 4;
+  google.protobuf.Timestamp done_on = 5;
+  google.protobuf.Timestamp generate_voting_cards_triggered = 6;
+}
+
+message PrintJobSummaries {
+  repeated PrintJobSummary summaries = 1;
+}
+
+message PrintJobSummary {
+  DomainOfInfluence domain_of_influence = 1;
+  PrintJobState state = 2;
+  google.protobuf.Timestamp process_started_on = 3;
+  google.protobuf.Timestamp process_ended_on = 4;
+  google.protobuf.Timestamp done_on = 5;
+  int32 attachments_defined_count = 6;
+  int32 attachments_delivered_count = 7;
+  google.protobuf.Timestamp generate_voting_cards_triggered = 8;
+  bool has_communal_political_businesses = 9;
+  string template_name = 10;
+  Step last_confirmed_step = 11;
+}
+
+enum PrintJobState {
+  PRINT_JOB_STATE_UNSPECIFIED = 0;
+  // "leer" / ""
+  PRINT_JOB_STATE_EMPTY = 1;
+  // "in Erfassung"
+  PRINT_JOB_STATE_SUBMISSION_ONGOING = 2;
+  // "bereit"
+  PRINT_JOB_STATE_READY_FOR_PROCESS = 3;
+  // "gestartet"
+  PRINT_JOB_STATE_PROCESS_STARTED = 4;
+  // "verarbeitet"
+  PRINT_JOB_STATE_PROCESS_ENDED = 5;
+  // "erledigt"
+  PRINT_JOB_STATE_DONE = 6;
+}

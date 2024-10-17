@@ -1,0 +1,29 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "google/protobuf/empty.proto";
+import "models/domain_of_influence_voting_card_layout.proto";
+import "models/template.proto";
+import "requests/domain_of_influence_voting_card_layout_requests.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service DomainOfInfluenceVotingCardLayoutService {
+  rpc SetLayout(requests.SetDomainOfInfluenceVotingCardLayoutRequest) returns (google.protobuf.Empty);
+  rpc SetOverriddenLayout(requests.SetOverriddenDomainOfInfluenceVotingCardLayoutRequest)
+    returns (google.protobuf.Empty);
+  rpc GetLayouts(requests.GetDomainOfInfluenceVotingCardLayoutsRequest)
+    returns (models.DomainOfInfluenceVotingCardLayouts);
+  rpc GetContestLayouts(requests.GetContestDomainOfInfluenceVotingCardLayoutsRequest)
+    returns (models.GroupedDomainOfInfluenceVotingCardLayouts);
+  rpc GetTemplates(requests.GetDomainOfInfluenceVotingCardLayoutTemplatesRequest) returns (models.Templates);
+  rpc GetPdfPreview(requests.GetDomainOfInfluenceVotingCardLayoutPdfPreviewRequest) returns (models.TemplatePreview);
+  rpc GetTemplateData(requests.GetDomainOfInfluenceVotingCardLayoutTemplateDataRequest)
+    returns (models.TemplateDataValues);
+  rpc SetTemplateData(requests.SetDomainOfInfluenceVotingCardLayoutTemplateDataRequest)
+    returns (google.protobuf.Empty);
+}

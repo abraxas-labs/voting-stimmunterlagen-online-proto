@@ -1,0 +1,17 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1;
+
+import "google/protobuf/empty.proto";
+import "models/voting_card_generator_job.proto";
+import "requests/voting_card_generator_jobs_requests.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
+
+service VotingCardGeneratorJobsService {
+  rpc ListJobs(requests.ListVotingCardGeneratorJobsRequest) returns (models.VotingCardGeneratorJobs);
+  rpc RetryJobs(requests.RetryVotingCardGeneratorJobsRequest) returns (google.protobuf.Empty);
+}

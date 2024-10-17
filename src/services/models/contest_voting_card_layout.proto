@@ -1,0 +1,23 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "models/contest.proto";
+import "models/template.proto";
+import "models/voting_card_type.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message ContestVotingCardLayouts {
+  repeated ContestVotingCardLayout layouts = 1;
+}
+
+message ContestVotingCardLayout {
+  Template template = 1;
+  bool allow_custom = 2;
+  VotingCardType voting_card_type = 3;
+  Contest contest = 4;
+}

@@ -1,0 +1,43 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message ElectoralRegisterFilter {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message ElectoralRegisterFilters {
+  repeated ElectoralRegisterFilter filters = 1;
+}
+
+message ElectoralRegisterFilterMetadata {
+  int32 number_of_persons = 1;
+  int32 number_of_invalid_persons = 2;
+  // Indicates whether the person's actuality is given or not.
+  bool is_actual = 3;
+  // The actuality date of the oldest person's data import.
+  google.protobuf.Timestamp actuality_date = 4;
+}
+
+message ElectoralRegisterFilterVersion {
+  string id = 1;
+  string name = 2;
+  google.protobuf.Timestamp deadline = 3;
+  int32 number_of_persons = 4;
+  int32 number_of_invalid_persons = 5;
+  google.protobuf.Timestamp created_at = 6;
+  string created_by_name = 7;
+}
+
+message ElectoralRegisterFilterVersions {
+  repeated ElectoralRegisterFilterVersion versions = 1;
+}

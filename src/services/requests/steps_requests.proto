@@ -1,0 +1,25 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "models/step.proto";
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message ListStepsRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message ApproveStepRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  models.Step step = 3 [(validation.v1.rules).enum.exact_enum = true];
+}
+
+message RevertStepRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  models.Step step = 3 [(validation.v1.rules).enum.exact_enum = true];
+}

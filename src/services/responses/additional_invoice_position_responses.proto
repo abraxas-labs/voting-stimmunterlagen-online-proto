@@ -1,0 +1,14 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.responses;
+
+import "models/additional_invoice_position.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Responses";
+
+message ListAdditionalInvoicePositionAvailableMaterialResponse {
+  repeated models.AdditionalInvoicePositionAvailableMaterial materials = 1;
+}

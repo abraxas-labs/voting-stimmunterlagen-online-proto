@@ -1,0 +1,43 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "google/protobuf/timestamp.proto";
+import "models/country.proto";
+import "models/salutation.proto";
+import "models/voting_card_type.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message ManualVotingCardVoter {
+  VotingCardType voting_card_type = 1;
+  Salutation salutation = 2;
+  string title = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string address_line_1 = 6;
+  string address_line_2 = 7;
+  string street = 8;
+  string house_number = 9;
+  string dwelling_number = 10;
+  string locality = 11;
+  string town = 12;
+  oneof zip_code {
+    int32 swiss_zip_code = 13;
+    string foreign_zip_code = 14;
+  }
+  Country country = 15;
+  string language_of_correspondence = 16;
+  string person_id = 17;
+  google.protobuf.Timestamp date_of_birth = 18;
+}
+
+message VoterDuplicate {
+  string person_id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string date_of_birth = 4;
+}

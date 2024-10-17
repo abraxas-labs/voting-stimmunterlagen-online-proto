@@ -1,0 +1,17 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+enum ExportJobState {
+  EXPORT_JOB_STATE_UNSPECIFIED = 0;
+  EXPORT_JOB_STATE_PENDING = 1;
+  EXPORT_JOB_STATE_READY_TO_RUN = 2;
+  EXPORT_JOB_STATE_RUNNING = 3;
+  EXPORT_JOB_STATE_COMPLETED = 4;
+  EXPORT_JOB_STATE_FAILED = 5;
+}

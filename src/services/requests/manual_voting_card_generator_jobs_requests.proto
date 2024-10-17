@@ -1,0 +1,52 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.requests;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "models/salutation.proto";
+import "models/voting_card_type.proto";
+import "rules/rules.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
+
+message ListManualVotingCardGeneratorJobsRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message CreateManualVotingCardGeneratorJobRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  CreateManualVotingCardVoterRequest voter = 2 [(validation.v1.rules).object.required = true];;
+}
+
+// keep validation in sync with db model validation / ech-004yied
+message CreateManualVotingCardVoterRequest {
+  models.VotingCardType voting_card_type = 1 [(validation.v1.rules).enum.exact_enum = true];
+  models.Salutation salutation = 2 [(validation.v1.rules).enum = { exact_enum: true, allow_unspecified: true }];
+  string title = 3 [(validation.v1.rules).string = { max_length: 50, complex_sl_text: true, allow_empty: true }];
+  string first_name = 4 [(validation.v1.rules).string = { min_length: 1, max_length: 100, simple_sl_text: true }];
+  string last_name = 5 [(validation.v1.rules).string = { min_length: 1, max_length: 100, simple_sl_text: true }];
+  string address_line_1 = 6 [(validation.v1.rules).string = { max_length: 150, complex_sl_text: true, allow_empty: true }];
+  string address_line_2 = 7 [(validation.v1.rules).string = { max_length: 150, complex_sl_text: true, allow_empty: true }];
+  string street = 8 [(validation.v1.rules).string = { min_length: 1, max_length: 150, complex_sl_text: true }];
+  string house_number = 9 [(validation.v1.rules).string = { max_length: 30, complex_sl_text: true, allow_empty: true }];
+  string dwelling_number = 10 [(validation.v1.rules).string = { max_length: 30, complex_sl_text: true, allow_empty: true }];
+  string locality = 11 [(validation.v1.rules).string = { max_length: 40, complex_sl_text: true, allow_empty: true }];
+  string town = 12 [(validation.v1.rules).string = { min_length: 1, max_length: 40, complex_sl_text: true }];
+  oneof zip_code {
+    google.protobuf.Int32Value swiss_zip_code = 13 [(validation.v1.rules).integer = { min_value: 1000, max_value: 9999}];
+    string foreign_zip_code = 14 [(validation.v1.rules).string = { max_length: 40, complex_sl_text: true, allow_empty: true }];
+  }
+  CreateCountryRequest country = 15 [(validation.v1.rules).object.required = true];
+  string language_of_correspondence = 16 [(validation.v1.rules).string = { min_length: 2, max_length: 2, alpha: true }];
+  string person_id = 17 [(validation.v1.rules).string = { min_length: 1, max_length: 36, simple_sl_text: true }];
+  google.protobuf.Timestamp date_of_birth = 18;
+}
+
+message CreateCountryRequest {
+  string iso2 = 1 [(validation.v1.rules).string = { min_length: 2, max_length: 2, alpha: true }];
+  string name = 2 [(validation.v1.rules).string = { min_length: 1, max_length: 50, simple_sl_text: true }];
+}

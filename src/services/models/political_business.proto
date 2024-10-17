@@ -1,0 +1,36 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "models/domain_of_influence.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message PoliticalBusinesses {
+  repeated PoliticalBusiness political_businesses = 1;
+}
+
+message PoliticalBusiness {
+  reserved 5;
+  reserved "internal_description";
+  string id = 1;
+  string political_business_number = 2;
+  string official_description = 3;
+  string short_description = 4;
+  DomainOfInfluence domain_of_influence = 6;
+  PoliticalBusinessType political_business_type = 7;
+  bool active = 8;
+  bool approved = 9;
+}
+
+enum PoliticalBusinessType {
+  // compatibility with VOTING.Basis
+  POLITICAL_BUSINESS_TYPE_UNSPECIFIED = 0;
+  POLITICAL_BUSINESS_TYPE_VOTE = 1;
+  POLITICAL_BUSINESS_TYPE_MAJORITY_ELECTION = 2;
+  POLITICAL_BUSINESS_TYPE_PROPORTIONAL_ELECTION = 3;
+  POLITICAL_BUSINESS_TYPE_SECONDARY_MAJORITY_ELECTION = 4;
+}

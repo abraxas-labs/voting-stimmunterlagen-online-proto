@@ -1,0 +1,43 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+import "models/domain_of_influence.proto";
+import "models/template.proto";
+import "models/voting_card_type.proto";
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message DomainOfInfluenceVotingCardLayouts {
+  repeated DomainOfInfluenceVotingCardLayout layouts = 1;
+}
+
+message DomainOfInfluenceVotingCardLayout {
+  // the template inherited from the contest
+  Template contest_template = 1;
+
+  // the template especially set for this doi by the contest manager
+  Template domain_of_influence_template = 3;
+
+  // the template especially set for this doi by the doi manager
+  Template overridden_template = 4;
+
+  // the template with the highest priority (overridden_template > domain_of_influence_template > contest_template)
+  Template effective_template = 5;
+
+  bool allow_custom = 6;
+  VotingCardType voting_card_type = 7;
+  DomainOfInfluence domain_of_influence = 8;
+}
+
+message GroupedDomainOfInfluenceVotingCardLayouts {
+  repeated GroupedDomainOfInfluenceVotingCardLayout layout_groups = 1;
+}
+
+message GroupedDomainOfInfluenceVotingCardLayout {
+  DomainOfInfluence domain_of_influence = 1;
+  repeated DomainOfInfluenceVotingCardLayout layouts = 2;
+}
