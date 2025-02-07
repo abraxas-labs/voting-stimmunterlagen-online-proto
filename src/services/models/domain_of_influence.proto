@@ -6,6 +6,7 @@ syntax = "proto3";
 package abraxas.voting.stimmunterlagen.v1.models;
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 import "models/domain_of_influence_voting_card_print_data.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
@@ -41,6 +42,12 @@ message DomainOfInfluence {
 
   // indicates when the last voter list was imported or when the last manual voting card was generated
   google.protobuf.Timestamp last_voter_update = 14;
+
+  // indicates when the "Gut zum Druck" was granted
+  google.protobuf.Timestamp generate_voting_cards_triggered = 15;
+
+  // indicates whether any assigned counting circle has e-voting.
+  google.protobuf.BoolValue e_voting = 16;
 }
 
 enum DomainOfInfluenceType {

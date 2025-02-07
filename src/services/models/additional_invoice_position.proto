@@ -24,9 +24,11 @@ message AdditionalInvoicePosition {
   User created_by = 6;
   google.protobuf.Timestamp modified = 7;
   User modified_by = 8;
+  string comment = 9;
 }
 
 message AdditionalInvoicePositionAvailableMaterial {
   string number = 1;
   string description = 2;
+  bool comment_required = 3;
 }

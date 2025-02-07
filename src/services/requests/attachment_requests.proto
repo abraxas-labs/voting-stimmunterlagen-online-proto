@@ -29,6 +29,7 @@ message CreateAttachmentRequest {
   int32 ordered_count = 8 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000 }];
   int32 required_count = 9 [(validation.v1.rules).integer = { min_value: 0, max_value: 1000000 }];
   models.AttachmentCategory category = 10 [(validation.v1.rules).enum.exact_enum = true];
+  bool send_only_to_householder = 11;
 }
 
 message UpdateAttachmentRequest {
@@ -42,6 +43,7 @@ message UpdateAttachmentRequest {
   int32 ordered_count = 8 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000 }];
   int32 required_count = 9 [(validation.v1.rules).integer = { min_value: 0, max_value: 1000000 }];
   models.AttachmentCategory category = 10 [(validation.v1.rules).enum.exact_enum = true];
+  bool send_only_to_householder = 11;
 }
 
 message AssignPoliticalBusinessAttachmentRequest {

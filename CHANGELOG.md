@@ -1,4 +1,4 @@
-# ✨ Changelog (`v2.3.0`)
+# ✨ Changelog (`v3.1.0`)
 
 All notable changes to this project will be documented in this file.
 
@@ -8,11 +8,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Version Info
 
 ```text
-This version -------- v2.3.0
-Previous version ---- v2.2.0
+This version -------- v3.1.0
+Previous version ---- v2.3.0
 Initial version ----- v2.1.1
 Total commits ------- 6
 ```
+
+## [v3.1.0] - 2025-01-28
+
+### 🆕 Added
+
+- send attachment only to householder
+
+## [v3.0.3] - 2024-12-06
+
+### ❌ Removed
+
+- remove unused political business approved field
+
+## [v3.0.2] - 2024-12-05
+
+### 🆕 Added
+
+- add additional invoice position comment
+
+## [v3.0.1] - 2024-11-22
+
+### 🔄 Changed
+
+- add e-voting info to domain of influence
+
+## [v3.0.0] - 2024-11-15
+
+BREAKING CHANGE: update Angular to version 18
+
+### 🔄 Changed
+
+- update Angular to version 18
+
+## [v2.3.1] - 2024-10-16
+
+### 🔄 Changed
+
+- add generate voting cards triggered field to domain of influence
 
 ## [v2.3.0] - 2024-10-08
 

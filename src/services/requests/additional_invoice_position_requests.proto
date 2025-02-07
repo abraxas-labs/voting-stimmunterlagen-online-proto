@@ -17,6 +17,7 @@ message CreateAdditionalInvoicePositionRequest {
   string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
   string material_number = 2 [(validation.v1.rules).string = { min_length: 1, max_length: 16, simple_sl_text: true }];
   int32 amount_centime = 3 [(validation.v1.rules).integer = { min_value: 25, max_value: 100000000 }];
+  string comment = 4 [(validation.v1.rules).string = { max_length: 500, simple_sl_text: true, allow_empty: true }];
 }
 
 message UpdateAdditionalInvoicePositionRequest {
@@ -24,4 +25,5 @@ message UpdateAdditionalInvoicePositionRequest {
   string domain_of_influence_id = 2 [(validation.v1.rules).string.guid = true];
   string material_number = 3 [(validation.v1.rules).string = { min_length: 1, max_length: 16, simple_sl_text: true }];
   int32 amount_centime = 4 [(validation.v1.rules).integer = { min_value: 25, max_value: 100000000 }];
+  string comment = 5 [(validation.v1.rules).string = { max_length: 500, simple_sl_text: true, allow_empty: true }];
 }
