@@ -15,4 +15,5 @@ option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
 service ManualVotingCardGeneratorJobsService {
   rpc List(requests.ListManualVotingCardGeneratorJobsRequest) returns (models.ManualVotingCardGeneratorJobs);
   rpc Create(requests.CreateManualVotingCardGeneratorJobRequest) returns (models.TemplatePreview);
+  rpc CreateEmpty(requests.CreateEmptyManualVotingCardGeneratorJobRequest) returns (models.TemplatePreview);
 }

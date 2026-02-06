@@ -7,6 +7,7 @@ package abraxas.voting.stimmunterlagen.v1.models;
 
 import "models/contest.proto";
 import "models/template.proto";
+import "models/voting_card_layout.proto";
 import "models/voting_card_type.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
@@ -20,4 +21,5 @@ message ContestVotingCardLayout {
   bool allow_custom = 2;
   VotingCardType voting_card_type = 3;
   Contest contest = 4;
+  VotingCardLayoutDataConfiguration data_configuration = 5;
 }

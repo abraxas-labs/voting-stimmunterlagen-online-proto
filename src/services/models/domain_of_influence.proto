@@ -48,6 +48,14 @@ message DomainOfInfluence {
 
   // indicates whether any assigned counting circle has e-voting.
   google.protobuf.BoolValue e_voting = 16;
+
+  // indicates whether multiple electoral registers are enabled. Also defines whether external voter duplicates are allowed or not.
+  bool electoral_register_multiple_enabled = 17;
+  bool stistat_municipality = 18;
+  string bfs = 19;
+  bool has_empty_voting_cards = 20;
+  int32 count_of_empty_voting_cards = 21;
+  google.protobuf.Timestamp last_count_of_empty_voting_cards_update = 22;
 }
 
 enum DomainOfInfluenceType {

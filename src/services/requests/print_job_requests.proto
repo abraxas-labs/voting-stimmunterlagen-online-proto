@@ -5,7 +5,7 @@ syntax = "proto3";
 
 package abraxas.voting.stimmunterlagen.v1.requests;
 
-import "models/print_job.proto";
+import "models/print_job_state.proto";
 import "rules/rules.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";

@@ -26,3 +26,8 @@ message ListEVotingDomainOfInfluencesRequest {
 message ListDomainOfInfluenceChildrenRequest {
   string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
 }
+
+message SetCountOfEmptyVotingCardsDomainOfInfluenceRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+  int32 count_of_empty_voting_cards = 2 [(validation.v1.rules).integer = { min_value: 0, max_value: 100000 }];
+}

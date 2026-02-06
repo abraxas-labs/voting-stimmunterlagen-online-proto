@@ -7,6 +7,7 @@ package abraxas.voting.stimmunterlagen.v1.requests;
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
+import "models/religion.proto";
 import "models/salutation.proto";
 import "models/voting_card_type.proto";
 import "rules/rules.proto";
@@ -20,6 +21,10 @@ message ListManualVotingCardGeneratorJobsRequest {
 message CreateManualVotingCardGeneratorJobRequest {
   string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
   CreateManualVotingCardVoterRequest voter = 2 [(validation.v1.rules).object.required = true];;
+}
+
+message CreateEmptyManualVotingCardGeneratorJobRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
 }
 
 // keep validation in sync with db model validation / ech-004yied
@@ -42,8 +47,14 @@ message CreateManualVotingCardVoterRequest {
   }
   CreateCountryRequest country = 15 [(validation.v1.rules).object.required = true];
   string language_of_correspondence = 16 [(validation.v1.rules).string = { min_length: 2, max_length: 2, alpha: true }];
-  string person_id = 17 [(validation.v1.rules).string = { min_length: 1, max_length: 36, simple_sl_text: true }];
+  string person_id = 17 [(validation.v1.rules).string = { min_length: 1, max_length: 36, simple_sl_text: true, allow_empty: true  }];
   google.protobuf.Timestamp date_of_birth = 18;
+  models.Religion religion = 19 [(validation.v1.rules).enum = { exact_enum: true, allow_unspecified: true }];
+  bool is_householder = 20;
+  string domain_of_influence_identification_church = 21
+    [(validation.v1.rules).string = { min_length: 1, max_length: 100, simple_sl_text: true, allow_empty: true  }];
+  string domain_of_influence_identification_school = 22
+    [(validation.v1.rules).string = { min_length: 1, max_length: 100, simple_sl_text: true, allow_empty: true  }];
 }
 
 message CreateCountryRequest {

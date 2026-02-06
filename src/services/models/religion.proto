@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+enum Religion {
+  RELIGION_UNSPECIFIED = 0;
+  RELIGION_OTHER = 1;
+  RELIGION_PROTESTANT = 2;
+  RELIGION_CATHOLIC = 3;
+  RELIGION_PROTESTANT_MINOR_OR_FOREIGNER = 4;
+  RELIGION_CATHOLIC_MINOR_OR_FOREIGNER = 5;
+}

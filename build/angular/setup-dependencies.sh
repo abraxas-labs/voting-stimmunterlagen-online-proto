@@ -6,7 +6,7 @@ set -Eeuo pipefail
 # but there is no such infrastructure @ abraxas yet...
 
 PROTOC_VERSION=3.19.0
-PROTOC_GRPC_WEB_VERSION=1.3.1
+PROTOC_GRPC_WEB_VERSION=1.5.0
 
 BIN=/usr/bin
 PROTOC_BIN=/usr/share/protoc

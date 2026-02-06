@@ -1,0 +1,17 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+message VotingCardLayoutDataConfiguration {
+  bool include_person_id = 1;
+  bool include_date_of_birth = 2;
+  bool include_religion = 3;
+  bool include_is_householder = 4;
+  bool include_domain_of_influence_church = 5;
+  bool include_domain_of_influence_school = 6;
+}

@@ -7,6 +7,7 @@ package abraxas.voting.stimmunterlagen.v1.requests;
 
 import "google/protobuf/wrappers.proto";
 import "models/voting_card_type.proto";
+import "requests/voting_card_layout_requests.proto";
 import "rules/rules.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
@@ -17,6 +18,7 @@ message SetDomainOfInfluenceVotingCardLayoutRequest {
   models.VotingCardType voting_card_type = 3 [(validation.v1.rules).enum.exact_enum = true];
   // if not set, the value is inherited from the contest, can be converted to proto3 optional with proto3.15
   google.protobuf.Int32Value template_id = 4 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000}];
+  requests.EnterVotingCardLayoutDataConfigurationRequest data_configuration = 5  [(validation.v1.rules).object.required = true];
 }
 
 message SetOverriddenDomainOfInfluenceVotingCardLayoutRequest {
@@ -24,6 +26,7 @@ message SetOverriddenDomainOfInfluenceVotingCardLayoutRequest {
   models.VotingCardType voting_card_type = 2 [(validation.v1.rules).enum.exact_enum = true];
   // if not set, the value is reset.
   google.protobuf.Int32Value template_id = 3 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000}];
+  requests.EnterVotingCardLayoutDataConfigurationRequest data_configuration = 4  [(validation.v1.rules).object.required = true];
 }
 
 message GetDomainOfInfluenceVotingCardLayoutsRequest {

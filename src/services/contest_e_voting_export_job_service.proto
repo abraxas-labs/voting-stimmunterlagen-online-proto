@@ -13,5 +13,6 @@ option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
 
 service ContestEVotingExportJobService {
   rpc GetJob(requests.GetContestEVotingExportJobRequest) returns (models.ContestEVotingExportJob);
+  rpc UpdateAndResetJob(requests.UpdateAndResetContestEVotingExportJobRequest) returns (google.protobuf.Empty);
   rpc RetryJob(requests.RetryContestEVotingExportJobRequest) returns (google.protobuf.Empty);
 }

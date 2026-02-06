@@ -15,3 +15,7 @@ message ListPoliticalBusinessesRequest {
     string contest_id = 2 [(validation.v1.rules).string = { guid: true, allow_empty: true }];
   }
 }
+
+message ListAttachmentAccessiblePoliticalBusinessesRequest {
+  string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
+}

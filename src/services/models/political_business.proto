@@ -5,6 +5,7 @@ syntax = "proto3";
 
 package abraxas.voting.stimmunterlagen.v1.models;
 
+import "google/protobuf/wrappers.proto";
 import "models/domain_of_influence.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
@@ -23,6 +24,7 @@ message PoliticalBusiness {
   DomainOfInfluence domain_of_influence = 6;
   PoliticalBusinessType political_business_type = 7;
   bool active = 8;
+  google.protobuf.BoolValue e_voting_approved = 9;
 }
 
 enum PoliticalBusinessType {

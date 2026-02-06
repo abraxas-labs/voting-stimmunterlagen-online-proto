@@ -12,4 +12,5 @@ option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
 
 service PoliticalBusinessService {
   rpc List(requests.ListPoliticalBusinessesRequest) returns (models.PoliticalBusinesses);
+  rpc ListAttachmentAccessible(requests.ListAttachmentAccessiblePoliticalBusinessesRequest) returns (models.PoliticalBusinesses);
 }

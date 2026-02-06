@@ -20,5 +20,5 @@ message GetDomainOfInfluenceVotingCardBrickContentEditorUrlRequest {
 
 message UpdateDomainOfInfluenceVotingCardBrickContentRequest {
   int32 content_id = 1 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000 }];
-  string content = 2 [(validation.v1.rules).string = { min_length: 1, max_length: 5000 }];
+  string content = 2 [(validation.v1.rules).string = { min_length: 1, max_length: 20000 }];
 }

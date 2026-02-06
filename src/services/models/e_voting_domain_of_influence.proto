@@ -17,6 +17,6 @@ message EVotingDomainOfInfluenceEntry {
   bool e_voting_ready = 1;
   int32 parent_political_businesses_count = 2;
   int32 own_political_businesses_count = 3;
-  int32 number_of_e_voters = 4;
+  int32 count_of_voting_cards_for_e_voters = 4;
   DomainOfInfluence domain_of_influence = 5;
 }

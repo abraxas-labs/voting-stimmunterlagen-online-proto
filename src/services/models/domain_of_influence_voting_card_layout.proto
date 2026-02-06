@@ -7,6 +7,7 @@ package abraxas.voting.stimmunterlagen.v1.models;
 
 import "models/domain_of_influence.proto";
 import "models/template.proto";
+import "models/voting_card_layout.proto";
 import "models/voting_card_type.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
@@ -31,6 +32,7 @@ message DomainOfInfluenceVotingCardLayout {
   bool allow_custom = 6;
   VotingCardType voting_card_type = 7;
   DomainOfInfluence domain_of_influence = 8;
+  VotingCardLayoutDataConfiguration data_configuration = 9;
 }
 
 message GroupedDomainOfInfluenceVotingCardLayouts {

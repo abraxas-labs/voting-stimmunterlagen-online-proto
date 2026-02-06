@@ -8,15 +8,15 @@ package abraxas.voting.stimmunterlagen.v1.models;
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 import "models/political_business.proto";
-import "models/voter.proto";
 import "models/voting_card_type.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
 
 message VoterLists {
   repeated VoterList voter_lists = 1;
-  repeated PoliticalBusinessNumberOfVoters number_of_voters = 2;
+  repeated PoliticalBusinessCountOfVotingCards count_of_voting_cards = 2;
   int32 total_number_of_voters = 3;
+  int32 total_count_of_voting_cards = 4;
 }
 
 message VoterList {
@@ -25,17 +25,17 @@ message VoterList {
   VoterListSource source = 3;
   int32 number_of_voters = 4;
   string name = 5;
-  int32 count_of_send_voting_cards_to_domain_of_influence_return_address = 6;
+  int32 count_of_voting_cards_for_domain_of_influence_return_address = 6;
   repeated string political_business_ids = 7;
   google.protobuf.Timestamp last_update = 8;
   google.protobuf.BoolValue send_voting_cards_to_domain_of_influence_return_address = 9;
   string import_id = 10;
-  repeated VoterDuplicate voter_duplicates = 11;
+  int32 count_of_voting_cards = 11;
 }
 
-message PoliticalBusinessNumberOfVoters {
+message PoliticalBusinessCountOfVotingCards {
   PoliticalBusiness political_business = 1;
-  int32 number_of_voters = 2;
+  int32 count_of_voting_cards = 2;
 }
 
 enum VoterListSource {

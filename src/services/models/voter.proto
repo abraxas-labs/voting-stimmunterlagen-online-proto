@@ -7,6 +7,7 @@ package abraxas.voting.stimmunterlagen.v1.models;
 
 import "google/protobuf/timestamp.proto";
 import "models/country.proto";
+import "models/religion.proto";
 import "models/salutation.proto";
 import "models/voting_card_type.proto";
 
@@ -33,11 +34,17 @@ message ManualVotingCardVoter {
   string language_of_correspondence = 16;
   string person_id = 17;
   google.protobuf.Timestamp date_of_birth = 18;
+  Religion religion = 19;
+  bool is_householder = 20;
+  string domain_of_influence_identification_church = 21;
+  string domain_of_influence_identification_school = 22;
 }
 
 message VoterDuplicate {
-  string person_id = 1;
-  string first_name = 2;
-  string last_name = 3;
-  string date_of_birth = 4;
+  string first_name = 1;
+  string last_name = 2;
+  string date_of_birth = 3;
+  string street = 4;
+  string house_number = 5;
+  bool external_duplicate = 6;
 }

@@ -7,6 +7,7 @@ package abraxas.voting.stimmunterlagen.v1.models;
 
 import "google/protobuf/timestamp.proto";
 import "models/domain_of_influence.proto";
+import "models/print_job_state.proto";
 import "models/step.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
@@ -40,20 +41,4 @@ message PrintJobSummary {
   bool has_communal_political_businesses = 9;
   string template_name = 10;
   Step last_confirmed_step = 11;
-}
-
-enum PrintJobState {
-  PRINT_JOB_STATE_UNSPECIFIED = 0;
-  // "leer" / ""
-  PRINT_JOB_STATE_EMPTY = 1;
-  // "in Erfassung"
-  PRINT_JOB_STATE_SUBMISSION_ONGOING = 2;
-  // "bereit"
-  PRINT_JOB_STATE_READY_FOR_PROCESS = 3;
-  // "gestartet"
-  PRINT_JOB_STATE_PROCESS_STARTED = 4;
-  // "verarbeitet"
-  PRINT_JOB_STATE_PROCESS_ENDED = 5;
-  // "erledigt"
-  PRINT_JOB_STATE_DONE = 6;
 }

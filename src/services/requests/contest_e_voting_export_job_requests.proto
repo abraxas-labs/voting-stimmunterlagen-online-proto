@@ -5,6 +5,7 @@ syntax = "proto3";
 
 package abraxas.voting.stimmunterlagen.v1.requests;
 
+import "models/ech_0045_version.proto";
 import "rules/rules.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
@@ -15,4 +16,9 @@ message GetContestEVotingExportJobRequest {
 
 message RetryContestEVotingExportJobRequest {
   string contest_id = 1 [(validation.v1.rules).string.guid = true];
+}
+
+message UpdateAndResetContestEVotingExportJobRequest {
+  string contest_id = 1 [(validation.v1.rules).string.guid = true];
+  models.Ech0045Version ech_0045_version = 2 [(validation.v1.rules).enum.exact_enum = true];
 }

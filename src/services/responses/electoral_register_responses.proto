@@ -20,12 +20,17 @@ message VoterListImportWithElectoralRegisterResponse {
   string import_id = 1;
   string filter_version_id = 2;
   repeated VoterListImportVoterListResponse voter_lists = 3;
+  VoterListImportError error = 4;
 }
 
 message VoterListImportVoterListResponse {
   string id = 1;
   models.VotingCardType voting_card_type = 2;
   int32 number_of_voters = 3;
-  int32 count_of_send_voting_cards_to_domain_of_influence_return_address = 4;
-  repeated models.VoterDuplicate voter_duplicates = 5;
+  int32 count_of_voting_cards_for_domain_of_influence_return_address = 4;
+}
+
+message VoterListImportError {
+  repeated models.VoterDuplicate voter_duplicates = 1;
+  int32 voter_duplicates_count = 2;
 }

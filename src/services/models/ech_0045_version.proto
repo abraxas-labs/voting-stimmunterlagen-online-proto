@@ -7,11 +7,8 @@ package abraxas.voting.stimmunterlagen.v1.models;
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
 
-enum VotingCardSort {
-  VOTING_CARD_SORT_UNSPECIFIED = 0;
-  VOTING_CARD_SORT_STREET = 1;
-  VOTING_CARD_SORT_NAME = 2;
-  VOTING_CARD_SORT_PLACE = 3;
-  VOTING_CARD_SORT_DENOMINATION = 4;
-  VOTING_CARD_SORT_HOUSEHOLD = 5;
+enum Ech0045Version {
+  ECH_0045_VERSION_UNSPECIFIED = 0;
+  ECH_0045_VERSION_4 = 1;
+  ECH_0045_VERSION_6 = 2;
 }

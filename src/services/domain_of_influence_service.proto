@@ -22,4 +22,6 @@ service DomainOfInfluenceService {
   // updates settings of the domain of influence for a contest
   // needs contest manager permissions
   rpc UpdateSettings(requests.UpdateDomainOfInfluenceSettingsRequest) returns (google.protobuf.Empty);
+
+  rpc SetCountOfEmptyVotingCards(requests.SetCountOfEmptyVotingCardsDomainOfInfluenceRequest) returns (google.protobuf.Empty);
 }

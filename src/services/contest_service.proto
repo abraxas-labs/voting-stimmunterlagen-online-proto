@@ -9,6 +9,7 @@ import "google/protobuf/empty.proto";
 import "models/contest.proto";
 import "requests/contest_requests.proto";
 import "requests/id_value_requests.proto";
+import "responses/contest_responses.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
 
@@ -16,7 +17,12 @@ service ContestService {
   rpc Get(requests.IdValueRequest) returns (models.Contest);
   rpc List(requests.ListContestsRequest) returns (models.Contests);
   rpc SetDeadlines(requests.SetContestDeadlinesRequest) returns (google.protobuf.Empty);
-  rpc UpdatePrintingCenterSignUpDeadline(requests.UpdateContestPrintingCenterSignupDeadlineRequest)
+  rpc GetPreviewCommunalDeadlines(requests.GetPreviewCommunalDeadlinesRequest)
+    returns (responses.GetPreviewCommunalContestDeadlinesResponse);
+  rpc SetCommunalDeadlines(requests.SetCommunalContestDeadlinesRequest) returns (responses.SetCommunalContestDeadlinesResponse);
+  rpc ResetGenerateVotingCardsAndUpdateContestDeadlines(requests.ResetGenerateVotingCardsAndUpdateContestDeadlinesRequest)
+    returns (google.protobuf.Empty);
+  rpc ResetGenerateVotingCardsAndUpdateCommunalContestDeadlines(requests.ResetGenerateVotingCardsAndUpdateCommunalContestDeadlinesRequest)
     returns (google.protobuf.Empty);
 }
 

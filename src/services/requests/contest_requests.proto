@@ -20,11 +20,31 @@ message SetContestDeadlinesRequest {
   google.protobuf.Timestamp printing_center_sign_up_deadline_date = 2 [(validation.v1.rules).object.required = true];
   google.protobuf.Timestamp attachment_delivery_deadline_date = 3 [(validation.v1.rules).object.required = true];
   google.protobuf.Timestamp generate_voting_cards_deadline_date = 4 [(validation.v1.rules).object.required = true];
+  google.protobuf.Timestamp electoral_register_e_voting_from_date = 5;
 }
 
-message UpdateContestPrintingCenterSignupDeadlineRequest {
+message GetPreviewCommunalDeadlinesRequest {
   string id = 1 [(validation.v1.rules).string.guid = true];
-  google.protobuf.Timestamp printing_center_sign_up_deadline_date = 2 [(validation.v1.rules).object.required = true];
-  repeated string reset_generate_voting_cards_triggered_domain_of_influence_ids = 3 [(validation.v1.rules).string.guid = true];
+  google.protobuf.Timestamp delivery_to_post_deadline_date = 2 [(validation.v1.rules).object.required = true];
+}
+
+message SetCommunalContestDeadlinesRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  google.protobuf.Timestamp delivery_to_post_deadline_date = 2 [(validation.v1.rules).object.required = true];
+}
+
+message ResetGenerateVotingCardsAndUpdateContestDeadlinesRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  repeated string reset_generate_voting_cards_triggered_domain_of_influence_ids = 2 [(validation.v1.rules).string.guid = true];
+  google.protobuf.Timestamp printing_center_sign_up_deadline_date = 3 [(validation.v1.rules).object.required = true];
   google.protobuf.Timestamp generate_voting_cards_deadline_date = 4 [(validation.v1.rules).object.required = true];
+}
+
+message ResetGenerateVotingCardsAndUpdateCommunalContestDeadlinesRequest {
+  string id = 1 [(validation.v1.rules).string.guid = true];
+  repeated string reset_generate_voting_cards_triggered_domain_of_influence_ids = 2 [(validation.v1.rules).string.guid = true];
+  google.protobuf.Timestamp printing_center_sign_up_deadline_date = 3 [(validation.v1.rules).object.required = true];
+  google.protobuf.Timestamp attachment_delivery_deadline_date = 4 [(validation.v1.rules).object.required = true];
+  google.protobuf.Timestamp generate_voting_cards_deadline_date = 5 [(validation.v1.rules).object.required = true];
+  google.protobuf.Timestamp delivery_to_post_deadline_date = 6 [(validation.v1.rules).object.required = true];
 }
