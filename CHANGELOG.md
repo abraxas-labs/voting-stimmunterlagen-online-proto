@@ -1,4 +1,4 @@
-# ✨ Changelog (`v3.16.2`)
+# ✨ Changelog (`v3.17.0`)
 
 All notable changes to this project will be documented in this file.
 
@@ -8,11 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Version Info
 
 ```text
-This version -------- v3.16.2
-Previous version ---- v2.3.0
+This version -------- v3.17.0
+Previous version ---- v3.16.2
 Initial version ----- v2.1.1
-Total commits ------- 32
+Total commits ------- 1
 ```
+
+## [v3.17.0] - 2026-03-26
+
+### 🔄 Changed
+
+- update angular 21
 
 ## [v3.16.2] - 2026-02-06
 
