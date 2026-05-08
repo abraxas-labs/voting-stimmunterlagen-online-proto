@@ -1,4 +1,4 @@
-# ✨ Changelog (`v3.17.0`)
+# ✨ Changelog (`v3.18.1`)
 
 All notable changes to this project will be documented in this file.
 
@@ -8,11 +8,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Version Info
 
 ```text
-This version -------- v3.17.0
-Previous version ---- v3.16.2
+This version -------- v3.18.1
+Previous version ---- v3.17.0
 Initial version ----- v2.1.1
-Total commits ------- 1
+Total commits ------- 3
 ```
+
+## [v3.18.1] - 2026-04-28
+
+### :x: Removed
+
+- enum elements VOTING_CARD_COLOR_CHAMOIS = 2 and VOTING_CARD_COLOR_GOLD = 4 from VotingCardColor. They are not used in Stimmunterlagen and already mapped from Basis to VOTING_CARD_COLOR_UNSPECIFIED = 0.
+
+### 🆕 Added
+
+- add node and dotnet image tags for ci-pipeline
+
+## [v3.18.0] - 2026-04-21
+
+### :new: Added
+
+- enum VotingCardColor
+
+### :arrows_counterclockwise: Changed
+
+- ContestVotingCardLayout, DomainOfInfluenceVotingCardLayout, SetContestVotingCardLayoutRequest, SetOverriddenDomainOfInfluenceVotingCardLayoutRequest: added color attributes to save and load color to/from service.
+
+###
 
 ## [v3.17.0] - 2026-03-26
 

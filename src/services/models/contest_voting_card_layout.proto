@@ -7,6 +7,7 @@ package abraxas.voting.stimmunterlagen.v1.models;
 
 import "models/contest.proto";
 import "models/template.proto";
+import "models/voting_card_color.proto";
 import "models/voting_card_layout.proto";
 import "models/voting_card_type.proto";
 
@@ -22,4 +23,5 @@ message ContestVotingCardLayout {
   VotingCardType voting_card_type = 3;
   Contest contest = 4;
   VotingCardLayoutDataConfiguration data_configuration = 5;
+  VotingCardColor color = 6;
 }

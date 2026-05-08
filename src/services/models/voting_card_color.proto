@@ -1,0 +1,24 @@
+// (c) Copyright by Abraxas Informatik AG
+// For license information see LICENSE file
+
+syntax = "proto3";
+
+package abraxas.voting.stimmunterlagen.v1.models;
+
+option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
+
+enum VotingCardColor {
+  VOTING_CARD_COLOR_UNSPECIFIED = 0;
+  VOTING_CARD_COLOR_BLUE = 1;
+  VOTING_CARD_COLOR_YELLOW = 3;
+  VOTING_CARD_COLOR_GREY = 5;
+  VOTING_CARD_COLOR_PINK = 6;
+  VOTING_CARD_COLOR_RED = 7;
+  VOTING_CARD_COLOR_GREEN = 8;
+
+  // removed unused codes
+  reserved 2;
+  reserved "VOTING_CARD_COLOR_CHAMOIS";
+  reserved 4;
+  reserved "VOTING_CARD_COLOR_GOLD";
+}
