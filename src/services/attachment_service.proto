@@ -28,6 +28,7 @@ service AttachmentService {
     returns (google.protobuf.Empty);
   rpc SetState(requests.SetAttachmentStateRequest) returns (google.protobuf.Empty);
   rpc SetStation(requests.SetAttachmentStationRequest) returns (google.protobuf.Empty);
+  rpc UpdateDelayedDeliveryDate(requests.UpdateAttachmentDelayedDeliveryDateRequest) returns (google.protobuf.Empty);
   rpc ListDomainOfInfluenceAttachmentCounts(requests.ListDomainOfInfluenceAttachmentCountsRequest)
     returns (models.DomainOfInfluenceAttachmentCounts);
   rpc UpdateDomainOfInfluenceAttachmentEntries (requests.UpdateDomainOfInfluenceAttachmentEntriesRequest)

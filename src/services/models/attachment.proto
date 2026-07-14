@@ -32,6 +32,7 @@ message Attachment {
   int32 ordered_count = 16;
   AttachmentCategory category = 17;
   bool send_only_to_householder = 18;
+  google.protobuf.Timestamp delayed_delivery_date = 19;
 }
 
 enum AttachmentFormat {

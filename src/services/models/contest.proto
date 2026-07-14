@@ -12,10 +12,6 @@ import "models/print_job_state.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Models";
 
-message Contests {
-  repeated Contest contests = 1;
-}
-
 message Contest {
   string id = 1;
   google.protobuf.Timestamp date = 2;

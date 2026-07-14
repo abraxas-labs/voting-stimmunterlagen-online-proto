@@ -6,6 +6,8 @@ syntax = "proto3";
 package abraxas.voting.stimmunterlagen.v1.responses;
 
 import "google/protobuf/timestamp.proto";
+import "models/contest.proto";
+import "models/page.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Responses";
 
@@ -21,4 +23,9 @@ message SetCommunalContestDeadlinesResponse {
   google.protobuf.Timestamp attachment_delivery_deadline = 2;
   google.protobuf.Timestamp generate_voting_cards_deadline = 3;
   google.protobuf.Timestamp delivery_to_post_deadline = 4;
+}
+
+message ListContestsResponse {
+  models.PageInfo page_info = 1;
+  repeated models.Contest contests = 2;
 }

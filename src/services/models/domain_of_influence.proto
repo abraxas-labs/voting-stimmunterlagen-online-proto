@@ -40,8 +40,8 @@ message DomainOfInfluence {
   // combination (!electoral_registration_enabled || allow_manual_voter_list_upload)
   bool can_manually_upload_voter_list = 13;
 
-  // indicates when the last voter list was imported or when the last manual voting card was generated
-  google.protobuf.Timestamp last_voter_update = 14;
+  // contains the latest last_update timestamp of a import within the domain of influence
+  google.protobuf.Timestamp latest_voter_list_imports_last_update = 14;
 
   // indicates when the "Gut zum Druck" was granted
   google.protobuf.Timestamp generate_voting_cards_triggered = 15;

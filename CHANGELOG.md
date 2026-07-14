@@ -1,4 +1,4 @@
-# ✨ Changelog (`v3.18.1`)
+# ✨ Changelog (`v3.20.1`)
 
 All notable changes to this project will be documented in this file.
 
@@ -8,11 +8,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Version Info
 
 ```text
-This version -------- v3.18.1
-Previous version ---- v3.17.0
+This version -------- v3.20.1
+Previous version ---- v3.18.1
 Initial version ----- v2.1.1
-Total commits ------- 3
+Total commits ------- 5
 ```
+
+## [v3.20.1] - 2026-07-13
+
+### 🆕 Added
+
+- add domain of influence list attendees
+
+## [v3.20.0] - 2026-07-07
+
+### 🆕 Added
+
+- add contest list paging
+
+## [v3.19.2] - 2026-07-01
+
+### 🆕 Added
+
+- add auto send split field to voter list
+
+## [v3.19.1] - 2026-06-23
+
+### 🆕 Added
+
+- add voter list imports last update flag
+
+## [v3.19.0] - 2026-06-02
+
+### 🆕 Added
+
+- add attachment delayed delivery date
 
 ## [v3.18.1] - 2026-04-28
 

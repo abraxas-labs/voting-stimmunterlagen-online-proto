@@ -31,6 +31,7 @@ message VoterList {
   google.protobuf.BoolValue send_voting_cards_to_domain_of_influence_return_address = 9;
   string import_id = 10;
   int32 count_of_voting_cards = 11;
+  bool auto_send_voting_cards_to_domain_of_influence_return_address_split = 12;
 }
 
 message PoliticalBusinessCountOfVotingCards {

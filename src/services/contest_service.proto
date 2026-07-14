@@ -15,7 +15,7 @@ option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1";
 
 service ContestService {
   rpc Get(requests.IdValueRequest) returns (models.Contest);
-  rpc List(requests.ListContestsRequest) returns (models.Contests);
+  rpc List(requests.ListContestsRequest) returns (responses.ListContestsResponse);
   rpc SetDeadlines(requests.SetContestDeadlinesRequest) returns (google.protobuf.Empty);
   rpc GetPreviewCommunalDeadlines(requests.GetPreviewCommunalDeadlinesRequest)
     returns (responses.GetPreviewCommunalContestDeadlinesResponse);

@@ -7,12 +7,14 @@ package abraxas.voting.stimmunterlagen.v1.requests;
 
 import "google/protobuf/timestamp.proto";
 import "models/contest.proto";
+import "models/page.proto";
 import "rules/rules.proto";
 
 option csharp_namespace = "Voting.Stimmunterlagen.Proto.V1.Requests";
 
 message ListContestsRequest {
-  repeated models.ContestState states = 1 [(validation.v1.rules).enum.exact_enum = true];
+  models.Pageable pageable = 1; // Optional pageable for pagination, if not provided, all contests are returned
+  repeated models.ContestState states = 2 [(validation.v1.rules).enum.exact_enum = true];
 }
 
 message SetContestDeadlinesRequest {
