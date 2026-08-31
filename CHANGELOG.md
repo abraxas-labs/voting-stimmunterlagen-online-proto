@@ -1,4 +1,4 @@
-# ✨ Changelog (`v3.20.1`)
+# ✨ Changelog (`v3.21.0`)
 
 All notable changes to this project will be documented in this file.
 
@@ -8,11 +8,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Version Info
 
 ```text
-This version -------- v3.20.1
-Previous version ---- v3.18.1
+This version -------- v3.21.0
+Previous version ---- v3.20.1
 Initial version ----- v2.1.1
-Total commits ------- 5
+Total commits ------- 4
 ```
+
+## [v3.21.0] - 2026-08-31
+
+###
+
+### :arrows_counterclockwise: Changed
+
+voting_card_color proto: deleted colors VOTING_CARD_COLOR_GREY, VOTING_CARD_COLOR_RED. Added Colors VOTING_CARD_COLOR_ORANGE, VOTING_CARD_COLOR_PURPLE
+
+## [v3.20.4] - 2026-08-28
+
+### 🔄 Changed
+
+- add domain of influence attachment category summary can set required count
+
+## [v3.20.3] - 2026-08-25
+
+### 🆕 Added
+
+- add domain of influence political business attendees
+
+## [v3.20.2] - 2026-08-21
+
+### 🔄 Changed
+
+- support attachment supplier multi line text
 
 ## [v3.20.1] - 2026-07-13
 

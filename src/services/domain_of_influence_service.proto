@@ -18,7 +18,7 @@ service DomainOfInfluenceService {
   rpc ListManagedByCurrentTenant(requests.ListDomainOfInfluencesRequest) returns (models.DomainOfInfluences);
   rpc ListEVoting(requests.ListEVotingDomainOfInfluencesRequest) returns (models.EVotingDomainOfInfluenceEntries);
   rpc ListChildren(requests.ListDomainOfInfluenceChildrenRequest) returns (models.DomainOfInfluences);
-  rpc ListAttendees(requests.ListDomainOfInfluenceAttendeesRequest) returns (models.DomainOfInfluences);
+  rpc ListPoliticalBusinessAttendees(requests.ListDomainOfInfluencePoliticalBusinessAttendeesRequest) returns (models.DomainOfInfluences);
 
   // updates settings of the domain of influence for a contest
   // needs contest manager permissions

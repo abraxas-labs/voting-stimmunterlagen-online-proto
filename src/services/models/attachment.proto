@@ -93,6 +93,7 @@ message DomainOfInfluenceAttachmentCategorySummariesEntry {
   DomainOfInfluence domain_of_influence = 1;
   repeated AttachmentCategorySummary attachment_category_summaries = 2;
   repeated PoliticalBusiness political_businesses = 3;
+  bool can_set_required_count = 4;
 }
 
 message AttachmentCategorySummary {

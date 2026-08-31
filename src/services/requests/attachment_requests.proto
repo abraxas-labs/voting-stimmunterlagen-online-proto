@@ -22,7 +22,7 @@ message CreateAttachmentRequest {
   string name = 1 [(validation.v1.rules).string = { min_length: 1, max_length: 300, complex_sl_text: true }];
   models.AttachmentFormat format = 2 [(validation.v1.rules).enum.exact_enum = true];
   string color = 3 [(validation.v1.rules).string = { max_length: 20, complex_sl_text: true, allow_empty: true }];
-  string supplier = 4 [(validation.v1.rules).string = { min_length: 1, max_length: 300, complex_sl_text: true }];
+  string supplier = 4 [(validation.v1.rules).string = { min_length: 1, max_length: 300, complex_ml_text: true }];
   google.protobuf.Timestamp delivery_planned_on = 5 [(validation.v1.rules).object.required = true];
   string domain_of_influence_id = 6 [(validation.v1.rules).string.guid = true];
   repeated string political_business_ids = 7 [(validation.v1.rules).string.guid = true];
@@ -37,7 +37,7 @@ message UpdateAttachmentRequest {
   string name = 2 [(validation.v1.rules).string = { min_length: 1, max_length: 300, complex_sl_text: true }];
   models.AttachmentFormat format = 3 [(validation.v1.rules).enum.exact_enum = true];
   string color = 4 [(validation.v1.rules).string = { max_length: 20, complex_sl_text: true, allow_empty: true }];
-  string supplier = 5 [(validation.v1.rules).string = { min_length: 1, max_length: 300, complex_sl_text: true }];
+  string supplier = 5 [(validation.v1.rules).string = { min_length: 1, max_length: 300, complex_ml_text: true }];
   google.protobuf.Timestamp delivery_planned_on = 6 [(validation.v1.rules).object.required = true];
   repeated string political_business_ids = 7 [(validation.v1.rules).string.guid = true];
   int32 ordered_count = 8 [(validation.v1.rules).integer = { min_value: 1, max_value: 1000000 }];

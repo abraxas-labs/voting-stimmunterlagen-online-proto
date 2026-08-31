@@ -27,7 +27,7 @@ message ListDomainOfInfluenceChildrenRequest {
   string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
 }
 
-message ListDomainOfInfluenceAttendeesRequest {
+message ListDomainOfInfluencePoliticalBusinessAttendeesRequest {
   string domain_of_influence_id = 1 [(validation.v1.rules).string.guid = true];
 }
 
